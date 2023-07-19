@@ -20,11 +20,14 @@ function App() {
   
   function handleChange(event){
     changeInputText(event.target.value)
+    event.preventDefault();
   }
   function handleClick(event){
-    if (inputText !== ""){
+        event.preventDefault();
+    if (inputText.trim() !== ""){
       setListContent(prevContent => [...prevContent, inputText])
     }
+    
   }
   function deleteClick(index){
         setListContent(prevContent => {
@@ -40,16 +43,16 @@ function App() {
         <h1>To-Do List </h1>
         
       </div>
-      <div className="form">
+      <form  onSubmit={handleClick} className="form">
         <input 
         type="text" 
         value={inputText}
         onChange={handleChange}
         />
-        <button onClick={handleClick}>
+        <button type="submit">
           <span>Add</span>
         </button>
-      </div>
+      </form>
       <div>
       <ul>
         {listContent.map((items, index) => 
