@@ -25,7 +25,8 @@ function App() {
   function handleClick(event){
         event.preventDefault();
     if (inputText.trim() !== ""){
-      setListContent(prevContent => [...prevContent, inputText])
+      setListContent(prevContent => [...prevContent, inputText]);
+      changeInputText("");
     }
     
   }
